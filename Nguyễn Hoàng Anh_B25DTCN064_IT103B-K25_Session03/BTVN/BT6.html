@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let totalCount = 0;
+        let seriousComplaintCount = 0;
+        let mediumComplaintCount = 0;
+        let lightComplaintCount = 0;
+        let suggestionCount = 0;
+        let positiveFeedbackCount = 0;
+
+        while (true) {
+            let request = prompt('Có khiếu nại/phản hồi mới từ bạn đọc không? (có/không)').toLowerCase();
+
+            if (request === 'không') {
+                break;
+            }
+
+            if (request === 'có') {
+                totalCount++;
+
+                let readerName = '';
+                while (readerName === '') {
+                    readerName = prompt('Nhập tên bạn đọc (không được để trống):')
+                }
+
+                let cardCode = prompt('Nhập mã thẻ bạn đọc (có thể để trống):')
+
+                let feedbackType = +prompt('Nhập loại phản hồi:\n1 - Phàn nàn / Khiếu nại\n2 - Đề xuất cải thiện\n3 - Phản hồi tích cực')
+
+                let severity = 0;
+                if (feedbackType === 1) {
+                    severity = +prompt('Nhập mức độ nghiêm trọng:\n 1 - Nhẹ\n 2 - Trung bình\n 3 - Nghiêm trọng')
+                }
+
+                let content = prompt('Nhập nội dung ngắn gọn (tham khảo):')
+
+                if (feedbackType === 1 && severity === 3) {
+                    console.log('→ Chuyển ngay lãnh đạo - Khiếu nại nghiêm trọng');
+                    seriousComplaintCount++;
+                }
+                else if (feedbackType === 1 && severity === 2) {
+                    console.log('→ Ghi nhận, sẽ xử lý trong ngày - Khiếu nại trung bình');
+                    mediumComplaintCount++;
+                }
+                else if (feedbackType === 1 && severity === 1) {
+                    console.log('→ Xử lý ngay tại quầy - Khiếu nại nhẹ');
+                    lightComplaintCount++;
+                }
+                else if (feedbackType === 2) {
+                    console.log('→ Cảm ơn! Đề xuất đã được ghi nhận');
+                    suggestionCount++;
+                }
+                else if (feedbackType === 3) {
+                    console.log('→ Cảm ơn bạn đã phản hồi tích cực!');
+                    positiveFeedbackCount++;
+                }
+                else {
+                    console.log('→ Thông tin phản hồi không hợp lệ');
+                }
+            }
+            else {
+                alert('Vui lòng nhập "có" hoặc "không"');
+            }
+        }
+
+        console.log('Tổng số phản hồi/khiếu nại đã xử lý:', totalCount);
+        console.log('Số khiếu nại nghiêm trọng (mức 3):', seriousComplaintCount);
+        console.log('Số khiếu nại trung bình (mức 2):', mediumComplaintCount);
+        console.log('Số khiếu nại nhẹ (mức 1):', lightComplaintCount);
+        console.log('Số đề xuất cải thiện:', suggestionCount);
+        console.log('Số phản hồi tích cực:', positiveFeedbackCount);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let turn = prompt('Hôm nay có bao nhiêu lượt trả sách?')
+        let returnCount = 0
+        let lateCount = 0
+
+        for (let index = 0; index < turn; index++) {
+            let readerName = prompt('Nhập tên người mượn')
+            let bookName = prompt('Nhập tên sách')
+            let borrowedDays = +prompt('Số ngày đã mượn thực tế')
+
+            if (borrowedDays >= 1) {
+                if (borrowedDays <= 14) {
+                    alert(`Trả đúng hạn`)
+                } else if (borrowedDays <= 21) {
+                    alert('Trả muộn nhẹ')
+                    lateCount++
+                } else {
+                    alert('Quá hạn nghiêm trọng')
+                    lateCount++
+                }
+                returnCount++
+            } else {
+                alert('Ngày trả không hợp lệ')
+            }
+        }
+        console.log(`Tổng ${returnCount} lượt trả`)
+        console.log(`Tổng ${lateCount} số lượt trả muộn`)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let turn = prompt('Hôm nay có bao nhiêu lượt mượn sách?')
+        let borrowCount = 0;
+
+        for (let index = 0; index < turn; index++) {
+            let readerName = prompt('Nhập tên người mượn')
+            let bookName = prompt('Nhập tên sách')
+            let borrowedDays = +prompt('Nhập số ngày mượn')
+
+            if (borrowedDays <= 14) {
+                alert(`Mượn thành công`)
+                borrowCount++
+            } else {
+                alert('Cảnh báo: Thời gian mượn vượt quy định (tối đa 14 ngày)')
+            }
+        }
+        console.log(`Tổng ${borrowCount} lượt mượn`)
+    </script>
+
+</body>
+
+</html>

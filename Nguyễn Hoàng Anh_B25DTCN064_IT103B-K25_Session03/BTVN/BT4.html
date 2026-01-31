@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let checkBookCount = 0
+        let lostBookCount = 0
+        let outOfStockBookCount = 0
+
+        while (true) {
+            let request = prompt('Tiếp tục kiểm kê sách tiếp theo? (có/không)').toLowerCase();
+
+            if (request === 'không') {
+                break;
+            }
+
+            if (request === 'có') {
+                let bookID = prompt('Nhập mã sách:');
+                let bookName = prompt('Nhập tên sách:');
+                let bookQuantity = +prompt('Nhập số lượng thực tế đang có trong kho (≥ 0):');
+                let bookStatus = +prompt('Nhập tình trạng sáchsách\n1 - Bình thườngthường\n2 - Mất:');
+
+                if (bookStatus == 1) {
+                    if (bookQuantity == 0) {
+                        alert('Sách hết (vẫn còn trong hệ thống)')
+                        outOfStockBookCount++
+                    } else if (bookQuantity < 10) {
+                        alert('Sách tồn kho bình thường')
+                    } else {
+                        alert('Sách tồn kho nhiều')
+                    }
+                }
+                else if (bookStatus == 2) {
+                    alert('Sách mất')
+                    lostBookCount++
+                }
+                else {
+                    alert('Vui lòng nhập 1 hoặc 2')
+                }
+                checkBookCount++
+            }
+            else {
+                alert('Vui lòng nhập "có" hoặc "không"')
+            }
+        }
+
+        console.log(`Tổng số sách đã kiểm kê: ${checkBookCount} cuốn`)
+        console.log(`Số sách mất: ${lostBookCount} cuốn`)
+        console.log(`Số sách hết hàng: ${outOfStockBookCount} cuốn`)
+    </script>
+
+</body>
+
+</html>
